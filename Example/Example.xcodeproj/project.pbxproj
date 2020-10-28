@@ -13,6 +13,8 @@
 		2539690525497145008B4E7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2539690425497145008B4E7D /* Assets.xcassets */; };
 		2539690825497145008B4E7D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2539690625497145008B4E7D /* LaunchScreen.storyboard */; };
 		2539690B25497145008B4E7D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2539690A25497145008B4E7D /* main.m */; };
+		253F133F25499D8C0072110E /* YQQPopupBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 253F133E25499D8C0072110E /* YQQPopupBaseView.m */; };
+		253F134225499F5D0072110E /* YQQPopupButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 253F134125499F5D0072110E /* YQQPopupButtonItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,10 @@
 		2539690725497145008B4E7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2539690925497145008B4E7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2539690A25497145008B4E7D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		253F133D25499D8B0072110E /* YQQPopupBaseView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YQQPopupBaseView.h; sourceTree = "<group>"; };
+		253F133E25499D8C0072110E /* YQQPopupBaseView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YQQPopupBaseView.m; sourceTree = "<group>"; };
+		253F134025499F5D0072110E /* YQQPopupButtonItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YQQPopupButtonItem.h; sourceTree = "<group>"; };
+		253F134125499F5D0072110E /* YQQPopupButtonItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YQQPopupButtonItem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +64,7 @@
 		253968F725497142008B4E7D /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				253F133C254996880072110E /* YQQPopupView */,
 				253968F825497142008B4E7D /* AppDelegate.h */,
 				253968F925497142008B4E7D /* AppDelegate.m */,
 				253968FE25497142008B4E7D /* ViewController.h */,
@@ -69,6 +76,17 @@
 				2539690A25497145008B4E7D /* main.m */,
 			);
 			path = Example;
+			sourceTree = "<group>";
+		};
+		253F133C254996880072110E /* YQQPopupView */ = {
+			isa = PBXGroup;
+			children = (
+				253F133D25499D8B0072110E /* YQQPopupBaseView.h */,
+				253F133E25499D8C0072110E /* YQQPopupBaseView.m */,
+				253F134025499F5D0072110E /* YQQPopupButtonItem.h */,
+				253F134125499F5D0072110E /* YQQPopupButtonItem.m */,
+			);
+			path = YQQPopupView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,7 +159,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2539690025497142008B4E7D /* ViewController.m in Sources */,
+				253F134225499F5D0072110E /* YQQPopupButtonItem.m in Sources */,
 				253968FA25497142008B4E7D /* AppDelegate.m in Sources */,
+				253F133F25499D8C0072110E /* YQQPopupBaseView.m in Sources */,
 				2539690B25497145008B4E7D /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,7 +308,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W43WD399J7;
 				INFOPLIST_FILE = Example/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -307,7 +327,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W43WD399J7;
 				INFOPLIST_FILE = Example/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
