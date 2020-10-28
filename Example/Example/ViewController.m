@@ -6,6 +6,7 @@
 //
 
 #import "ViewController.h"
+#import "YQQPopupBaseView.h"
 
 @interface ViewController ()
 
@@ -18,5 +19,9 @@
     // Do any additional setup after loading the view.
 }
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    YQQPopupBaseView *popupView = [[YQQPopupBaseView alloc] init];
+    [popupView show];
+}
 
 @end

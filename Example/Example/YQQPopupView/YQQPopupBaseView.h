@@ -20,6 +20,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) CGFloat buttonContainerHeight;
 
+@property (nonatomic, assign) CGFloat motionEffectExtent;
+
+@property (nonatomic, strong) UIView *attachedView;
+
 @property (nonatomic, strong) NSArray<YQQPopupButtonItem *> *itemArray;
 
 #pragma mark - Public
@@ -30,7 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)close;
 
-#pragma mark - SubClass
+#pragma mark - Subclass Override
 
 - (NSArray<YQQPopupButtonItem *> *)fetchItemArray;
 
