@@ -207,7 +207,7 @@
                 self.textViewMaxLengthLabel.textAlignment = NSTextAlignmentRight;
                 self.textViewMaxLengthLabel.font = kYQQPopupViewConfig.textViewMaxLengthFont;
                 self.textViewMaxLengthLabel.textColor = kYQQPopupViewConfig.textViewMaxLengthColor;
-                self.textViewMaxLengthLabel.text = [NSString stringWithFormat:@"0/%ld", self.textViewMaxLength];
+                self.textViewMaxLengthLabel.text = [NSString stringWithFormat:@"0/%ld", (long)self.textViewMaxLength];
                 self.textViewMaxLengthLabel.frame = CGRectMake(CGRectGetWidth(inputBackgroundView.frame) - 8 - 40, CGRectGetHeight(inputBackgroundView.frame) - 8 - 17, 40, 17);
                 [inputBackgroundView addSubview:self.textViewMaxLengthLabel];
             }
@@ -258,7 +258,7 @@
 - (void)textViewDidChange:(UITextView *)textView {
     if (self.textViewMaxLength != 0) {
         if (textView.text.length <= self.textViewMaxLength) {
-            self.textViewMaxLengthLabel.text = [NSString stringWithFormat:@"%ld/%ld", textView.text.length, self.textViewMaxLength];
+            self.textViewMaxLengthLabel.text = [NSString stringWithFormat:@"%lu/%ld", (unsigned long)textView.text.length, (long)self.textViewMaxLength];
         } else {
             textView.text = [textView.text substringWithRange:NSMakeRange(0, self.textViewMaxLength)];
         }

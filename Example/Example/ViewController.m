@@ -22,6 +22,7 @@
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    YQQPopupView *popupView;
 //    popupView = [YQQPopupView popupViewWithTitle:@"这是title" detail:@"这是详情"];
 //    popupView = [YQQPopupView popupViewWithTitle:@"这是title" detail:@"这是详情" buttonTitles:@[@"cancel"] selectIndex:^(NSInteger index, NSString * _Nullable inputContent) {
 //
@@ -45,7 +46,6 @@
 //    popupView = [YQQPopupView popupViewWithTitle:@"这是title" detail:@"" placeholder:@"请输入" inputType:YQQPopupViewInputTypeTextView buttonTitles:@[@"cancel", @"ok"] buttonType:YQQPopupViewButtonTypeShapeless selectIndex:^(NSInteger index, NSString * _Nullable inputContent) {
 //
 //    }];
-    YQQPopupView *popupView;
     popupView = [YQQPopupView popupViewWithTitle:@"这是title" detail:@"" inputType:YQQPopupViewInputTypeTextView placeholder:@"请输入" buttonType:YQQPopupViewButtonTypeRoundCorner buttonTitles:@[@"cancel", @"ok"] textViewMaxLength:50 selectIndex:^(NSInteger index, NSString * _Nullable inputContent) {
         NSLog(@"%@", inputContent);
     }];
