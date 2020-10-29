@@ -14,7 +14,6 @@
 		2539690825497145008B4E7D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2539690625497145008B4E7D /* LaunchScreen.storyboard */; };
 		2539690B25497145008B4E7D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2539690A25497145008B4E7D /* main.m */; };
 		253F133F25499D8C0072110E /* YQQPopupBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 253F133E25499D8C0072110E /* YQQPopupBaseView.m */; };
-		253F134225499F5D0072110E /* YQQPopupButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 253F134125499F5D0072110E /* YQQPopupButtonItem.m */; };
 		2568B007254A454700CC2F59 /* YQQPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2568B006254A454700CC2F59 /* YQQPopupView.m */; };
 		2568B012254A505800CC2F59 /* YQQPopupViewConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 2568B011254A505800CC2F59 /* YQQPopupViewConfig.m */; };
 		2568B016254A572900CC2F59 /* UIColor+YQQAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 2568B015254A572900CC2F59 /* UIColor+YQQAdd.m */; };
@@ -35,8 +34,6 @@
 		2539690A25497145008B4E7D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		253F133D25499D8B0072110E /* YQQPopupBaseView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YQQPopupBaseView.h; sourceTree = "<group>"; };
 		253F133E25499D8C0072110E /* YQQPopupBaseView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YQQPopupBaseView.m; sourceTree = "<group>"; };
-		253F134025499F5D0072110E /* YQQPopupButtonItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YQQPopupButtonItem.h; sourceTree = "<group>"; };
-		253F134125499F5D0072110E /* YQQPopupButtonItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YQQPopupButtonItem.m; sourceTree = "<group>"; };
 		2568B005254A454700CC2F59 /* YQQPopupView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YQQPopupView.h; sourceTree = "<group>"; };
 		2568B006254A454700CC2F59 /* YQQPopupView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YQQPopupView.m; sourceTree = "<group>"; };
 		2568B010254A505800CC2F59 /* YQQPopupViewConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YQQPopupViewConfig.h; sourceTree = "<group>"; };
@@ -98,8 +95,6 @@
 			children = (
 				253F133D25499D8B0072110E /* YQQPopupBaseView.h */,
 				253F133E25499D8C0072110E /* YQQPopupBaseView.m */,
-				253F134025499F5D0072110E /* YQQPopupButtonItem.h */,
-				253F134125499F5D0072110E /* YQQPopupButtonItem.m */,
 				2568B005254A454700CC2F59 /* YQQPopupView.h */,
 				2568B006254A454700CC2F59 /* YQQPopupView.m */,
 				2568B021254AB6FA00CC2F59 /* YQQCustomPopupView.h */,
@@ -187,7 +182,6 @@
 				2568B012254A505800CC2F59 /* YQQPopupViewConfig.m in Sources */,
 				2539690025497142008B4E7D /* ViewController.m in Sources */,
 				2568B01F254A931000CC2F59 /* UITextView+YQQAdd.m in Sources */,
-				253F134225499F5D0072110E /* YQQPopupButtonItem.m in Sources */,
 				253968FA25497142008B4E7D /* AppDelegate.m in Sources */,
 				2568B007254A454700CC2F59 /* YQQPopupView.m in Sources */,
 				253F133F25499D8C0072110E /* YQQPopupBaseView.m in Sources */,

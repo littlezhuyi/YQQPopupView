@@ -6,7 +6,6 @@
 //
 
 #import "YQQPopupBaseView.h"
-#import "YQQPopupButtonItem.h"
 #import "YQQPopupViewConfig.h"
 
 @interface YQQPopupBaseView ()
