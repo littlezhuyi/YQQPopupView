@@ -148,6 +148,7 @@
         titleHeight = ceilf(titleHeight);
         UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(kYQQPopupViewConfig.titleLabelMargin, kYQQPopupViewConfig.titleLabelTop, kContentContainerWidth - kYQQPopupViewConfig.titleLabelMargin * 2, titleHeight)];
         titleLabel.textAlignment = NSTextAlignmentCenter;
+        titleLabel.numberOfLines = 0;
         titleLabel.font = kYQQPopupViewConfig.titleFont;
         titleLabel.textColor = kYQQPopupViewConfig.titleColor;
         titleLabel.text = self.title;
@@ -156,14 +157,15 @@
         lastView = titleLabel;
     }
     if (self.detail.length) {
-        CGFloat detailHeight = [self calculateTextWidth:self.title font:kYQQPopupViewConfig.detailFont];
+        CGFloat detailHeight = [self calculateTextWidth:self.detail font:kYQQPopupViewConfig.detailFont];
         detailHeight = ceilf(detailHeight);
         UILabel *detailLabel = [[UILabel alloc] init];
         detailLabel.textAlignment = NSTextAlignmentCenter;
+        detailLabel.numberOfLines = 0;
         detailLabel.font = kYQQPopupViewConfig.detailFont;
         detailLabel.textColor = kYQQPopupViewConfig.detailColor;
         detailLabel.text = self.detail;
-        detailLabel.frame = CGRectMake(kYQQPopupViewConfig.detailLabelMargin, kYQQPopupViewConfig.detailLabelTop + CGRectGetMaxY(lastView.frame), kContentContainerWidth - kYQQPopupViewConfig.detailLabelMargin * 2, detailHeight);
+        detailLabel.frame = CGRectMake(kYQQPopupViewConfig.detailLabelMargin, kYQQPopupViewConfig.detailLabelTop + CGRectGetMaxY(lastView.frame), ceilf(kContentContainerWidth - kYQQPopupViewConfig.detailLabelMargin * 2), detailHeight);
         [contentContainer addSubview:detailLabel];
         contentContainerHeight = contentContainerHeight + kYQQPopupViewConfig.detailLabelTop + detailHeight;
         lastView = detailLabel;
@@ -207,7 +209,7 @@
                 self.textViewMaxLengthLabel.textAlignment = NSTextAlignmentRight;
                 self.textViewMaxLengthLabel.font = kYQQPopupViewConfig.textViewMaxLengthFont;
                 self.textViewMaxLengthLabel.textColor = kYQQPopupViewConfig.textViewMaxLengthColor;
-                self.textViewMaxLengthLabel.text = [NSString stringWithFormat:@"0/%ld", (long)self.textViewMaxLength];
+                self.textViewMaxLengthLabel.text = [NSString stringWithFormat:@"0/%ld", self.textViewMaxLength];
                 self.textViewMaxLengthLabel.frame = CGRectMake(CGRectGetWidth(inputBackgroundView.frame) - 8 - 40, CGRectGetHeight(inputBackgroundView.frame) - 8 - 17, 40, 17);
                 [inputBackgroundView addSubview:self.textViewMaxLengthLabel];
             }
