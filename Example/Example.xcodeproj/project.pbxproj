@@ -15,6 +15,11 @@
 		2539690B25497145008B4E7D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2539690A25497145008B4E7D /* main.m */; };
 		253F133F25499D8C0072110E /* YQQPopupBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 253F133E25499D8C0072110E /* YQQPopupBaseView.m */; };
 		253F134225499F5D0072110E /* YQQPopupButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 253F134125499F5D0072110E /* YQQPopupButtonItem.m */; };
+		2568B007254A454700CC2F59 /* YQQPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2568B006254A454700CC2F59 /* YQQPopupView.m */; };
+		2568B012254A505800CC2F59 /* YQQPopupViewConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 2568B011254A505800CC2F59 /* YQQPopupViewConfig.m */; };
+		2568B016254A572900CC2F59 /* UIColor+YQQAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 2568B015254A572900CC2F59 /* UIColor+YQQAdd.m */; };
+		2568B01F254A931000CC2F59 /* UITextView+YQQAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 2568B01E254A931000CC2F59 /* UITextView+YQQAdd.m */; };
+		2568B023254AB6FA00CC2F59 /* YQQCustomPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2568B022254AB6FA00CC2F59 /* YQQCustomPopupView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +37,16 @@
 		253F133E25499D8C0072110E /* YQQPopupBaseView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YQQPopupBaseView.m; sourceTree = "<group>"; };
 		253F134025499F5D0072110E /* YQQPopupButtonItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YQQPopupButtonItem.h; sourceTree = "<group>"; };
 		253F134125499F5D0072110E /* YQQPopupButtonItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YQQPopupButtonItem.m; sourceTree = "<group>"; };
+		2568B005254A454700CC2F59 /* YQQPopupView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YQQPopupView.h; sourceTree = "<group>"; };
+		2568B006254A454700CC2F59 /* YQQPopupView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YQQPopupView.m; sourceTree = "<group>"; };
+		2568B010254A505800CC2F59 /* YQQPopupViewConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YQQPopupViewConfig.h; sourceTree = "<group>"; };
+		2568B011254A505800CC2F59 /* YQQPopupViewConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YQQPopupViewConfig.m; sourceTree = "<group>"; };
+		2568B014254A572900CC2F59 /* UIColor+YQQAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+YQQAdd.h"; sourceTree = "<group>"; };
+		2568B015254A572900CC2F59 /* UIColor+YQQAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+YQQAdd.m"; sourceTree = "<group>"; };
+		2568B01D254A931000CC2F59 /* UITextView+YQQAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITextView+YQQAdd.h"; sourceTree = "<group>"; };
+		2568B01E254A931000CC2F59 /* UITextView+YQQAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITextView+YQQAdd.m"; sourceTree = "<group>"; };
+		2568B021254AB6FA00CC2F59 /* YQQCustomPopupView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YQQCustomPopupView.h; sourceTree = "<group>"; };
+		2568B022254AB6FA00CC2F59 /* YQQCustomPopupView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YQQCustomPopupView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +100,16 @@
 				253F133E25499D8C0072110E /* YQQPopupBaseView.m */,
 				253F134025499F5D0072110E /* YQQPopupButtonItem.h */,
 				253F134125499F5D0072110E /* YQQPopupButtonItem.m */,
+				2568B005254A454700CC2F59 /* YQQPopupView.h */,
+				2568B006254A454700CC2F59 /* YQQPopupView.m */,
+				2568B021254AB6FA00CC2F59 /* YQQCustomPopupView.h */,
+				2568B022254AB6FA00CC2F59 /* YQQCustomPopupView.m */,
+				2568B010254A505800CC2F59 /* YQQPopupViewConfig.h */,
+				2568B011254A505800CC2F59 /* YQQPopupViewConfig.m */,
+				2568B014254A572900CC2F59 /* UIColor+YQQAdd.h */,
+				2568B015254A572900CC2F59 /* UIColor+YQQAdd.m */,
+				2568B01D254A931000CC2F59 /* UITextView+YQQAdd.h */,
+				2568B01E254A931000CC2F59 /* UITextView+YQQAdd.m */,
 			);
 			path = YQQPopupView;
 			sourceTree = "<group>";
@@ -158,11 +183,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2568B023254AB6FA00CC2F59 /* YQQCustomPopupView.m in Sources */,
+				2568B012254A505800CC2F59 /* YQQPopupViewConfig.m in Sources */,
 				2539690025497142008B4E7D /* ViewController.m in Sources */,
+				2568B01F254A931000CC2F59 /* UITextView+YQQAdd.m in Sources */,
 				253F134225499F5D0072110E /* YQQPopupButtonItem.m in Sources */,
 				253968FA25497142008B4E7D /* AppDelegate.m in Sources */,
+				2568B007254A454700CC2F59 /* YQQPopupView.m in Sources */,
 				253F133F25499D8C0072110E /* YQQPopupBaseView.m in Sources */,
 				2539690B25497145008B4E7D /* main.m in Sources */,
+				2568B016254A572900CC2F59 /* UIColor+YQQAdd.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,7 +338,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W43WD399J7;
 				INFOPLIST_FILE = Example/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -327,7 +357,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W43WD399J7;
 				INFOPLIST_FILE = Example/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

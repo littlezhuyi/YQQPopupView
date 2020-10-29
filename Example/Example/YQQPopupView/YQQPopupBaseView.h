@@ -7,6 +7,22 @@
 
 #import <UIKit/UIKit.h>
 @class YQQPopupButtonItem;
+@class YQQPopupBaseView;
+
+typedef NS_ENUM(NSUInteger, YQQPopupViewButtonType) {
+    YQQPopupViewButtonTypeRoundCorner,
+    YQQPopupViewButtonTypeShapeless
+};
+
+typedef void(^SelectIndex)(NSInteger index, NSString * _Nullable inputContent);
+
+@protocol YQQPopupBaseViewDelegate <NSObject>
+
+@optional
+
+- (void)popupView:(YQQPopupBaseView *_Nullable)popupView didSelectIndex:(NSInteger)index;
+
+@end
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,15 +32,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) BOOL closeOnTouchUpOutside;
 
-@property (nonatomic, assign) CGFloat separatorHeight;
-
-@property (nonatomic, assign) CGFloat buttonContainerHeight;
-
-@property (nonatomic, assign) CGFloat motionEffectExtent;
+@property (nonatomic, assign) YQQPopupViewButtonType buttonType;
 
 @property (nonatomic, strong) UIView *attachedView;
 
-@property (nonatomic, strong) NSArray<YQQPopupButtonItem *> *itemArray;
+@property (nonatomic, strong) NSArray *buttons;
+
+@property (nonatomic, weak) id<YQQPopupBaseViewDelegate> delegate;
 
 #pragma mark - Public
 
@@ -34,9 +48,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)close;
 
-#pragma mark - Subclass Override
++ (void)hideAllPopupView;
 
-- (NSArray<YQQPopupButtonItem *> *)fetchItemArray;
+#pragma mark - Subclass Override
 
 - (UIView *)fetchContentContainer;
 
