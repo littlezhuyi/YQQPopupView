@@ -43,7 +43,7 @@ popupView = [YQQPopupView popupViewWithTitle:@"这是title" detail:@"这是详�
 ### 使用方式五
 
 ```
-YQQPopupView *popupView = [YQQPopupView popupViewWithTitle:@"这是title" detail:@"" placeholder:@"请输入" buttonTitles:@[@"cancel", @"ok"] buttonType:YQQPopupViewButtonTypeShapeless selectIndex:^(NSInteger index, NSString * _Nullable inputContent) {
+popupView = [[YQQPopupView alloc] initWithTitle:@"这是title" detail:@"这是详情" placeholder:@"请输入" inputType:YQQPopupViewInputTypeTextView buttonTitles:@[@"cancel", @"ok"] buttonType:YQQPopupViewButtonTypeRoundCorner selectIndex:^(NSInteger index, NSString * _Nullable inputContent) {
 
 }];
 [popupView show];
