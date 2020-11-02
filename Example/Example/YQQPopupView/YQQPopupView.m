@@ -17,12 +17,6 @@
 
 @property (nonatomic, copy) NSString *detail;
 
-@property (nonatomic, assign) YQQPopupViewInputType inputType;
-
-@property (nonatomic, copy) NSString *placeholder;
-
-@property (nonatomic, assign) NSInteger textViewMaxLength;
-
 @property (nonatomic, strong) UILabel *textViewMaxLengthLabel;
 
 @property (nonatomic, copy) SelectIndex selectIndex;
@@ -42,12 +36,6 @@
 
 + (instancetype)popupViewWithTitle:(NSString *_Nullable)title
                             detail:(NSString *_Nullable)detail
-                        buttonType:(YQQPopupViewButtonType)buttonType {
-    return [self popupViewWithTitle:title detail:detail buttonTitles:@[@"确定"] buttonType:buttonType selectIndex:nil];
-}
-
-+ (instancetype)popupViewWithTitle:(NSString *_Nullable)title
-                            detail:(NSString *_Nullable)detail
                       buttonTitles:(NSArray *_Nullable)buttonTitles
                        selectIndex:(SelectIndex)selectIndex {
     return [self popupViewWithTitle:title detail:detail placeholder:nil buttonTitles:buttonTitles selectIndex:selectIndex];
@@ -55,36 +43,16 @@
 
 + (instancetype)popupViewWithTitle:(NSString *_Nullable)title
                             detail:(NSString *_Nullable)detail
-                      buttonTitles:(NSArray *_Nullable)buttonTitles
-                        buttonType:(YQQPopupViewButtonType)buttonType
-                       selectIndex:(SelectIndex)selectIndex {
-    return [self popupViewWithTitle:title detail:detail placeholder:nil buttonTitles:buttonTitles buttonType:buttonType selectIndex:selectIndex];
-}
-
-+ (instancetype)popupViewWithTitle:(NSString *_Nullable)title
-                            detail:(NSString *_Nullable)detail
                        placeholder:(NSString *_Nullable)placeholder
                       buttonTitles:(NSArray *_Nullable)buttonTitles
                        selectIndex:(SelectIndex)selectIndex {
-    return [self popupViewWithTitle:title detail:detail placeholder:placeholder inputType:YQQPopupViewInputTypeTextField buttonTitles:buttonTitles selectIndex:selectIndex];
-}
-
-+ (instancetype)popupViewWithTitle:(NSString *_Nullable)title
-                            detail:(NSString *_Nullable)detail
-                       placeholder:(NSString *_Nullable)placeholder
-                      buttonTitles:(NSArray *_Nullable)buttonTitles
-                        buttonType:(YQQPopupViewButtonType)buttonType
-                       selectIndex:(SelectIndex)selectIndex {
-    return [self popupViewWithTitle:title detail:detail placeholder:placeholder inputType:YQQPopupViewInputTypeTextField buttonTitles:buttonTitles buttonType:buttonType selectIndex:selectIndex];
-}
-
-+ (instancetype)popupViewWithTitle:(NSString *_Nullable)title
-                            detail:(NSString *_Nullable)detail
-                       placeholder:(NSString *_Nullable)placeholder
-                         inputType:(YQQPopupViewInputType)inputType
-                      buttonTitles:(NSArray *_Nullable)buttonTitles
-                       selectIndex:(SelectIndex)selectIndex {
-    return [self popupViewWithTitle:title detail:detail inputType:inputType placeholder:placeholder buttonType:YQQPopupViewButtonTypeRoundCorner buttonTitles:buttonTitles textViewMaxLength:0 selectIndex:selectIndex];
+    return [self popupViewWithTitle:title
+                             detail:detail
+                        placeholder:placeholder
+                          inputType:YQQPopupViewInputTypeTextView
+                       buttonTitles:buttonTitles
+                         buttonType:YQQPopupViewButtonTypeRoundCorner
+                        selectIndex:selectIndex];
 }
 
 + (instancetype)popupViewWithTitle:(NSString *_Nullable)title
@@ -93,48 +61,34 @@
                          inputType:(YQQPopupViewInputType)inputType
                       buttonTitles:(NSArray *_Nullable)buttonTitles
                         buttonType:(YQQPopupViewButtonType)buttonType
-                       selectIndex:(SelectIndex)selectIndex {
-    return [self popupViewWithTitle:title detail:detail inputType:inputType placeholder:placeholder buttonType:buttonType buttonTitles:buttonTitles textViewMaxLength:0 selectIndex:selectIndex];
-}
-
-+ (instancetype)popupViewWithTitle:(NSString *)title
-                            detail:(NSString *)detail
-                         inputType:(YQQPopupViewInputType)inputType
-                       placeholder:(NSString *)placeholder
-                        buttonType:(YQQPopupViewButtonType)buttonType
-                      buttonTitles:(NSArray *)buttonTitles
-                 textViewMaxLength:(NSInteger)textViewMaxLength
-                       selectIndex:(SelectIndex _Nullable)selectIndex{
+                       selectIndex:(SelectIndex _Nullable)selectIndex {
     return [[self alloc] initWithTitle:title
                                 detail:detail
-                             inputType:inputType
                            placeholder:placeholder
-                            buttonType:buttonType
+                             inputType:inputType
                           buttonTitles:buttonTitles
-                     textViewMaxLength:textViewMaxLength
+                            buttonType:buttonType
                            selectIndex:selectIndex];
 }
 
-- (instancetype)initWithTitle:(NSString *)title
-                       detail:(NSString *)detail
+- (instancetype)initWithTitle:(NSString *_Nullable)title
+                       detail:(NSString *_Nullable)detail
+                  placeholder:(NSString *_Nullable)placeholder
                     inputType:(YQQPopupViewInputType)inputType
-                  placeholder:(NSString *)placeholder
+                 buttonTitles:(NSArray *_Nullable)buttonTitles
                    buttonType:(YQQPopupViewButtonType)buttonType
-                 buttonTitles:(NSArray *)buttonTitles
-            textViewMaxLength:(NSInteger)textViewMaxLength
                   selectIndex:(SelectIndex _Nullable)selectIndex {
     self = [super init];
     if (self) {
         _title = title;
         _detail = detail;
-        _inputType = inputType;
-        _placeholder = placeholder;
-        _textViewMaxLength = textViewMaxLength;
+        self.inputType = inputType;
+        self.placeholder = placeholder;
         self.buttons = buttonTitles;
         self.selectIndex = selectIndex;
         self.delegate = self;
         self.buttonType = buttonType;
-        _shouldInspectIputViewBeforConfirm = _placeholder.length;
+        _shouldInspectIputViewBeforConfirm = self.placeholder.length;
     }
     return self;
 }

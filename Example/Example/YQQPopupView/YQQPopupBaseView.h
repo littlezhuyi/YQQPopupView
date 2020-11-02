@@ -14,6 +14,11 @@ typedef NS_ENUM(NSUInteger, YQQPopupViewButtonType) {
     YQQPopupViewButtonTypeShapeless
 };
 
+typedef NS_ENUM(NSUInteger, YQQPopupViewInputType) {
+    YQQPopupViewInputTypeTextField,
+    YQQPopupViewInputTypeTextView
+};
+
 typedef void(^SelectIndex)(NSInteger index, NSString * _Nullable inputContent);
 
 @protocol YQQPopupBaseViewDelegate <NSObject>
@@ -32,11 +37,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) BOOL closeOnTouchUpOutside;
 
-@property (nonatomic, assign) YQQPopupViewButtonType buttonType;
-
 @property (nonatomic, strong) UIView *attachedView;
 
 @property (nonatomic, strong) NSArray *buttons;
+
+@property (nonatomic, assign) YQQPopupViewButtonType buttonType;
+
+@property (nonatomic, assign) YQQPopupViewInputType inputType;
+
+@property (nonatomic, assign) NSInteger textViewMaxLength;
+
+@property (nonatomic, copy) NSString *placeholder;
 
 @property (nonatomic, weak) id<YQQPopupBaseViewDelegate> delegate;
 

@@ -29,6 +29,7 @@
         _closeOnTouchUpOutside = YES;
         _attachedView = [UIApplication sharedApplication].delegate.window;
         _buttons = @[@"ok"];
+        _textViewMaxLength = 50;
         
         self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
         
