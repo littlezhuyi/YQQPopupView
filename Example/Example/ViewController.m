@@ -26,7 +26,7 @@
     popupView = [YQQPopupView popupViewWithTitle:@"这是title" detail:@"这是详情"];
     popupView.useMotionEffects = YES;
     popupView.closeOnTouchUpOutside = NO;
-//    popupView = [YQQPopupView popupViewWithTitle:@"这是title" detail:@"这是详情" buttonTitles:@[@"cancel"] selectIndex:^(NSInteger index, NSString * _Nullable inputContent) {
+//    popupView = [YQQPopupView popupViewWithTitle:@"这是title" detail:@"这是详情" buttonTitles:@[@"cancel", @"ok"] selectIndex:^(NSInteger index, NSString * _Nullable inputContent) {
 //
 //    }];
 //    popupView = [YQQPopupView popupViewWithTitle:@"这是title" detail:@"这是详情" placeholder:@"请输入" buttonTitles:@[@"cancel", @"ok"] selectIndex:^(NSInteger index, NSString * _Nullable inputContent) {
