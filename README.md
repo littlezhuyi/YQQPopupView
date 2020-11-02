@@ -21,23 +21,24 @@ YQQPopupView *popupView = popupView = [YQQPopupView popupViewWithTitle:@"这是t
 ### 使用方式三
 
 ```
-YQQPopupView *popupView = [YQQPopupView popupViewWithTitle:@"这是title" detail:@"" placeholder:@"请输入" buttonTitles:@[@"cancel", @"ok"] selectIndex:^(NSInteger index, NSString * _Nullable inputContent) {
-}];
-[popupView show];
-```   
+popupView = [YQQPopupView popupViewWithTitle:@"这是title" detail:@"这是详情" placeholder:@"请输入" buttonTitles:@[@"cancel", @"ok"] selectIndex:^(NSInteger index, NSString * _Nullable inputContent) {
 
-<img src="https://github.com/littlezhuyi/YQQExampleImages/blob/master/YQQPopupView/textField.png" width="621" height="500">
-
-### 使用方式四
-
-```
-YQQPopupView *popupView = [YQQPopupView popupViewWithTitle:@"这是title" detail:@"" inputType:YQQPopupViewInputTypeTextView placeholder:@"请输入" buttonType:YQQPopupViewButtonTypeRoundCorner buttonTitles:@[@"cancel", @"ok"] textViewMaxLength:50 selectIndex:^(NSInteger index, NSString * _Nullable inputContent) {
-        NSLog(@"%@", inputContent);
 }];
 [popupView show];
 ``` 
 
 <img src="https://github.com/littlezhuyi/YQQExampleImages/blob/master/YQQPopupView/textView.png" width="621" height="500">
+
+### 使用方式四
+
+```
+popupView = [YQQPopupView popupViewWithTitle:@"这是title" detail:@"这是详情" placeholder:@"请输入" inputType:YQQPopupViewInputTypeTextField buttonTitles:@[@"cancel", @"ok"] buttonType:YQQPopupViewButtonTypeShapeless selectIndex:^(NSInteger index, NSString * _Nullable inputContent) {
+
+}];
+[popupView show];
+``` 
+
+<img src="https://github.com/littlezhuyi/YQQExampleImages/blob/master/YQQPopupView/shaplessButton.png" width="621" height="500">
 
 ### 使用方式五
 
@@ -48,7 +49,7 @@ YQQPopupView *popupView = [YQQPopupView popupViewWithTitle:@"这是title" detail
 [popupView show];
 ```
 
-<img src="https://github.com/littlezhuyi/YQQExampleImages/blob/master/YQQPopupView/shaplessButton.png" width="621" height="500">
+<img src="https://github.com/littlezhuyi/YQQExampleImages/blob/master/YQQPopupView/textView.png" width="621" height="500">
 
 ### 使用方式六
 
