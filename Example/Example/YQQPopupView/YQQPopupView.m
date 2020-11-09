@@ -9,7 +9,7 @@
 #import "YQQPopupViewConfig.h"
 #import "UITextView+YQQAdd.h"
 
-#define kContentContainerWidth 311
+#define kContentContainerWidth 312
 
 @interface YQQPopupView () <UITextViewDelegate, YQQPopupBaseViewDelegate>
 
@@ -98,9 +98,14 @@
     CGFloat contentContainerHeight = 0;
     UIView *lastView;
     if (self.title.length) {
-        CGFloat titleHeight = [self calculateTextWidth:self.title font:kYQQPopupViewConfig.titleFont];
-        titleHeight = ceilf(titleHeight);
-        UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(kYQQPopupViewConfig.titleLabelMargin, kYQQPopupViewConfig.titleLabelTop, kContentContainerWidth - kYQQPopupViewConfig.titleLabelMargin * 2, titleHeight)];
+        CGSize titleSize = [self calculateTextWidth:self.title font:kYQQPopupViewConfig.titleFont margin:kYQQPopupViewConfig.titleLabelMargin];
+        CGFloat titleHeight = ceilf(titleSize.height);
+        UILabel *titleLabel = [[UILabel alloc] init];
+        if (titleSize.width > kContentContainerWidth - kYQQPopupViewConfig.titleLabelMargin * 2) {
+            titleLabel.frame = CGRectMake(kYQQPopupViewConfig.titleLabelMargin, kYQQPopupViewConfig.titleLabelTop, kContentContainerWidth - kYQQPopupViewConfig.titleLabelMargin * 2, titleHeight);
+        } else {
+            titleLabel.frame = CGRectMake(floorf((kContentContainerWidth - titleSize.width) / 2.0), kYQQPopupViewConfig.titleLabelTop, ceilf(titleSize.width), titleHeight);
+        }
         titleLabel.textAlignment = NSTextAlignmentCenter;
         titleLabel.numberOfLines = 0;
         titleLabel.font = kYQQPopupViewConfig.titleFont;
@@ -111,15 +116,19 @@
         lastView = titleLabel;
     }
     if (self.detail.length) {
-        CGFloat detailHeight = [self calculateTextWidth:self.detail font:kYQQPopupViewConfig.detailFont];
-        detailHeight = ceilf(detailHeight);
+        CGSize detailSize = [self calculateTextWidth:self.detail font:kYQQPopupViewConfig.detailFont margin:kYQQPopupViewConfig.detailLabelMargin];
+        CGFloat detailHeight = ceilf(detailSize.height);
         UILabel *detailLabel = [[UILabel alloc] init];
-        detailLabel.textAlignment = NSTextAlignmentCenter;
+        detailLabel.textAlignment = NSTextAlignmentLeft;
         detailLabel.numberOfLines = 0;
         detailLabel.font = kYQQPopupViewConfig.detailFont;
         detailLabel.textColor = kYQQPopupViewConfig.detailColor;
         detailLabel.text = self.detail;
-        detailLabel.frame = CGRectMake(kYQQPopupViewConfig.detailLabelMargin, kYQQPopupViewConfig.detailLabelTop + CGRectGetMaxY(lastView.frame), ceilf(kContentContainerWidth - kYQQPopupViewConfig.detailLabelMargin * 2), detailHeight);
+        if (detailSize.width > kContentContainerWidth - kYQQPopupViewConfig.titleLabelMargin * 2) {
+            detailLabel.frame = CGRectMake(kYQQPopupViewConfig.detailLabelMargin, kYQQPopupViewConfig.detailLabelTop + CGRectGetMaxY(lastView.frame), ceilf(kContentContainerWidth - kYQQPopupViewConfig.detailLabelMargin * 2), detailHeight);
+        } else {
+            detailLabel.frame = CGRectMake(floorf((kContentContainerWidth - detailSize.width) / 2.0), kYQQPopupViewConfig.detailLabelTop + CGRectGetMaxY(lastView.frame), ceilf(detailSize.width), detailHeight);
+        }
         [contentContainer addSubview:detailLabel];
         contentContainerHeight = contentContainerHeight + kYQQPopupViewConfig.detailLabelTop + detailHeight;
         lastView = detailLabel;
@@ -224,11 +233,12 @@
 
 #pragma mark - Private
 
-- (CGFloat)calculateTextWidth:(NSString *)text font:(UIFont *)font {
+- (CGSize)calculateTextWidth:(NSString *)text font:(UIFont *)font margin:(CGFloat)margin {
     NSDictionary *btAtt = @{NSFontAttributeName : font};
-    CGSize textSize = CGSizeMake(kContentContainerWidth, CGFLOAT_MAX);
+    CGSize textSize = CGSizeMake(kContentContainerWidth - margin * 2, CGFLOAT_MAX);
     CGRect textRect = [text boundingRectWithSize:textSize options:NSStringDrawingUsesLineFragmentOrigin attributes:btAtt context:nil];
-    return textRect.size.height;
+    return textRect.size;
 }
 
 @end
+
