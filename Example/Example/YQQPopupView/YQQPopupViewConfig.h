@@ -7,8 +7,6 @@
 
 #import <UIKit/UIKit.h>
 
-#define kYQQPopupViewConfig [YQQPopupViewConfig sharedConfig]
-
 NS_ASSUME_NONNULL_BEGIN
 
 @interface YQQPopupViewConfig : NSObject
@@ -72,7 +70,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) CGFloat motionEffectExtent;
 
-+ (YQQPopupViewConfig *)sharedConfig;
++ (YQQPopupViewConfig *)defaultConfig;
+
++ (YQQPopupViewConfig *)redConfig;
 
 @end
 

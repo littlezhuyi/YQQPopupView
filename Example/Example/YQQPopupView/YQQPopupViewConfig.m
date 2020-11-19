@@ -10,78 +10,130 @@
 
 @implementation YQQPopupViewConfig
 
-+ (YQQPopupViewConfig *)sharedConfig {
-    static id sharedInstance = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        sharedInstance = [[self alloc] init];
-    });
-    return sharedInstance;
++ (YQQPopupViewConfig *)defaultConfig {
+    YQQPopupViewConfig *defaultConfig = [[self alloc] init];
+    defaultConfig.titleFont = [UIFont fontWithName:@"PingFangSC-Medium" size:18];
+    defaultConfig.detailFont = [UIFont fontWithName:@"PingFangSC-Regular" size:15];
+    defaultConfig.inputFont = [UIFont fontWithName:@"PingFangSC-Regular" size:13];
+    defaultConfig.placeFont = [UIFont fontWithName:@"PingFangSC-Regular" size:13];
+    defaultConfig.shapelessButtonFont = [UIFont fontWithName:@"PingFangSC-Medium" size:15];
+    defaultConfig.roundCornerButtonFont = [UIFont fontWithName:@"PingFangSC-Medium" size:15];
+    defaultConfig.textViewMaxLengthFont = [UIFont fontWithName:@"PingFangSC-Regular" size:12];
+    
+    defaultConfig.titleColor = [UIColor colorOfHex:0x282828 alpha:1.0];
+    defaultConfig.detailColor = [UIColor colorOfHex:0x8C8C8C alpha:1.0];
+    defaultConfig.inputColor = [UIColor colorOfHex:0x282828 alpha:1.0];
+    defaultConfig.placeColor = [UIColor colorOfHex:0xC8C8C8 alpha:1.0];
+    defaultConfig.textViewMaxLengthColor = [UIColor colorOfHex:0xC8C8C8 alpha:1.0];
+    defaultConfig.shapelessCancelButtonTitleColor = [UIColor colorOfHex:0x8C8C8C alpha:1.0];
+    defaultConfig.shapelessConfirmButtonTitleColor = [UIColor colorOfHex:0x1ACB97 alpha:1.0];
+    defaultConfig.roundCornerCancelButtonTitleColor = [UIColor colorOfHex:0x1ACB97 alpha:1.0];
+    defaultConfig.roundCornerConfirmButtonTitleColor = [UIColor colorOfHex:0xFFFFFF alpha:1.0];
+    defaultConfig.roundCornerCancelButtonBackgroundColor = [UIColor colorOfHex:0xFFFFFF alpha:1.0];
+    defaultConfig.roundCornerConfirmButtonBackgroundColor = [UIColor colorOfHex:0x1ACB97 alpha:1.0];
+    defaultConfig.roundCornerCancelButtonBorderColor = [UIColor colorOfHex:0x1ACB97 alpha:1.0];
+    defaultConfig.textFieldBackgroundViewColor = [UIColor colorOfHex:0xF8F8F8 alpha:1.0];
+    defaultConfig.textViewBackgroundViewBorderColor = [UIColor colorOfHex:0xD8D8D8 alpha:1.0];
+    defaultConfig.shapelessSeparatorBackgroundColor = [UIColor colorOfHex:0xD8D8D8 alpha:1.0];
+    defaultConfig.dialogBackgroundColor = [UIColor colorOfHex:0xFFFFFF alpha:1.0];
+    
+    defaultConfig.titleLabelTop = 20.0;
+    defaultConfig.titleLabelMargin = 20.0;
+    defaultConfig.detailLabelTop = 16.0;
+    defaultConfig.detailLabelMargin = 20.0;
+    defaultConfig.inputViewTop = 20.0;
+    defaultConfig.inputViewMargin = 20.0;
+    defaultConfig.buttonViewTop = 20.0;
+    defaultConfig.roundCornerButtonMargin = 20.0;
+    defaultConfig.roundCornerButtonMiddleMargin = 16.0;
+    defaultConfig.shapelessHorizontalSeparatorMargin = 0.0;
+    defaultConfig.shapelessVerticalSeparatorMargin = 0.0;
+    defaultConfig.textFieldMargin = 8;
+    defaultConfig.textViewMargin = 16;
+    defaultConfig.textViewTop = 8;
+    defaultConfig.textViewBottom = 33.0;
+    
+    defaultConfig.textFieldBackgroundViewHeight = 40.0;
+    defaultConfig.textViewBackgroundViewHeight = 125.0;
+    defaultConfig.roundCornerButtonBackgroundViewHeight = 80.0;
+    defaultConfig.roundCornerButtonHeight = 40.0;
+    defaultConfig.shapelessButtonHeight = 54.0;
+    defaultConfig.shapelessSeparatorHeight = 0.5;
+    defaultConfig.contentContainerIncrement = 40.0;
+    
+    defaultConfig.dialogCornerRadius = 6.0;
+    defaultConfig.roundCornerButtonCornerRadius = 20.0;
+    defaultConfig.textFieldBackgroundViewCornerRadius = 20.0;
+    defaultConfig.textViewBackgroundViewCornerRadius = 6.0;
+    
+    defaultConfig.textViewBackgroundViewBorderWidth = 1.0;
+    defaultConfig.roundCornerCancelButtonBorderWidth = 1.0;
+    
+    defaultConfig.motionEffectExtent = 10.0;
+    return defaultConfig;
 }
 
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        _titleFont = [UIFont fontWithName:@"PingFangSC-Medium" size:18];
-        _detailFont = [UIFont fontWithName:@"PingFangSC-Regular" size:15];
-        _inputFont = [UIFont fontWithName:@"PingFangSC-Regular" size:13];
-        _placeFont = [UIFont fontWithName:@"PingFangSC-Regular" size:13];
-        _shapelessButtonFont = [UIFont fontWithName:@"PingFangSC-Medium" size:15];
-        _roundCornerButtonFont = [UIFont fontWithName:@"PingFangSC-Medium" size:15];
-        _textViewMaxLengthFont = [UIFont fontWithName:@"PingFangSC-Regular" size:12];
-        
-        _titleColor = [UIColor colorOfHex:0x282828 alpha:1.0];
-        _detailColor = [UIColor colorOfHex:0x8C8C8C alpha:1.0];
-        _inputColor = [UIColor colorOfHex:0x282828 alpha:1.0];
-        _placeColor = [UIColor colorOfHex:0xC8C8C8 alpha:1.0];
-        _textViewMaxLengthColor = [UIColor colorOfHex:0xC8C8C8 alpha:1.0];
-        _shapelessCancelButtonTitleColor = [UIColor colorOfHex:0x8C8C8C alpha:1.0];
-        _shapelessConfirmButtonTitleColor = [UIColor colorOfHex:0x1ACB97 alpha:1.0];
-        _roundCornerCancelButtonTitleColor = [UIColor colorOfHex:0x1ACB97 alpha:1.0];
-        _roundCornerConfirmButtonTitleColor = [UIColor colorOfHex:0xFFFFFF alpha:1.0];
-        _roundCornerCancelButtonBackgroundColor = [UIColor colorOfHex:0xFFFFFF alpha:1.0];
-        _roundCornerConfirmButtonBackgroundColor = [UIColor colorOfHex:0x1ACB97 alpha:1.0];
-        _roundCornerCancelButtonBorderColor = [UIColor colorOfHex:0x1ACB97 alpha:1.0];
-        _textFieldBackgroundViewColor = [UIColor colorOfHex:0xF8F8F8 alpha:1.0];
-        _textViewBackgroundViewBorderColor = [UIColor colorOfHex:0xD8D8D8 alpha:1.0];
-        _shapelessSeparatorBackgroundColor = [UIColor colorOfHex:0xD8D8D8 alpha:1.0];
-        _dialogBackgroundColor = [UIColor colorOfHex:0xFFFFFF alpha:1.0];
-        
-        _titleLabelTop = 20.0;
-        _titleLabelMargin = 20.0;
-        _detailLabelTop = 16.0;
-        _detailLabelMargin = 20.0;
-        _inputViewTop = 20.0;
-        _inputViewMargin = 20.0;
-        _buttonViewTop = 20.0;
-        _roundCornerButtonMargin = 20.0;
-        _roundCornerButtonMiddleMargin = 16.0;
-        _shapelessHorizontalSeparatorMargin = 0.0;
-        _shapelessVerticalSeparatorMargin = 0.0;
-        _textFieldMargin = 8;
-        _textViewMargin = 16;
-        _textViewTop = 8;
-        _textViewBottom = 33.0;
-        
-        _textFieldBackgroundViewHeight = 40.0;
-        _textViewBackgroundViewHeight = 125.0;
-        _roundCornerButtonBackgroundViewHeight = 80.0;
-        _roundCornerButtonHeight = 40.0;
-        _shapelessButtonHeight = 54.0;
-        _shapelessSeparatorHeight = 0.6;
-        _contentContainerIncrement = 16.0;
-        
-        _dialogCornerRadius = 6.0;
-        _roundCornerButtonCornerRadius = 20.0;
-        _textFieldBackgroundViewCornerRadius = 20.0;
-        _textViewBackgroundViewCornerRadius = 6.0;
-        
-        _textViewBackgroundViewBorderWidth = 1.0;
-        _roundCornerCancelButtonBorderWidth = 1.0;
-        
-        _motionEffectExtent = 10.0;
-    }
-    return self;
++ (YQQPopupViewConfig *)redConfig {
+    YQQPopupViewConfig *defaultConfig = [[self alloc] init];
+    defaultConfig.titleFont = [UIFont fontWithName:@"PingFangSC-Medium" size:18];
+    defaultConfig.detailFont = [UIFont fontWithName:@"PingFangSC-Regular" size:15];
+    defaultConfig.inputFont = [UIFont fontWithName:@"PingFangSC-Regular" size:13];
+    defaultConfig.placeFont = [UIFont fontWithName:@"PingFangSC-Regular" size:13];
+    defaultConfig.shapelessButtonFont = [UIFont fontWithName:@"PingFangSC-Medium" size:15];
+    defaultConfig.roundCornerButtonFont = [UIFont fontWithName:@"PingFangSC-Medium" size:15];
+    defaultConfig.textViewMaxLengthFont = [UIFont fontWithName:@"PingFangSC-Regular" size:12];
+    
+    defaultConfig.titleColor = [UIColor colorOfHex:0x282828 alpha:1.0];
+    defaultConfig.detailColor = [UIColor colorOfHex:0x8C8C8C alpha:1.0];
+    defaultConfig.inputColor = [UIColor colorOfHex:0x282828 alpha:1.0];
+    defaultConfig.placeColor = [UIColor colorOfHex:0xC8C8C8 alpha:1.0];
+    defaultConfig.textViewMaxLengthColor = [UIColor colorOfHex:0xC8C8C8 alpha:1.0];
+    defaultConfig.shapelessCancelButtonTitleColor = [UIColor colorOfHex:0x8C8C8C alpha:1.0];
+    defaultConfig.shapelessConfirmButtonTitleColor = [UIColor colorOfHex:0x1ACB97 alpha:1.0];
+    defaultConfig.roundCornerCancelButtonTitleColor = [UIColor colorOfHex:0xF9382B alpha:1.0];
+    defaultConfig.roundCornerConfirmButtonTitleColor = [UIColor colorOfHex:0xFFFFFF alpha:1.0];
+    defaultConfig.roundCornerCancelButtonBackgroundColor = [UIColor colorOfHex:0xFFFFFF alpha:1.0];
+    defaultConfig.roundCornerConfirmButtonBackgroundColor = [UIColor colorOfHex:0xF9382B alpha:1.0];
+    defaultConfig.roundCornerCancelButtonBorderColor = [UIColor colorOfHex:0xF9382B alpha:1.0];
+    defaultConfig.textFieldBackgroundViewColor = [UIColor colorOfHex:0xF8F8F8 alpha:1.0];
+    defaultConfig.textViewBackgroundViewBorderColor = [UIColor colorOfHex:0xD8D8D8 alpha:1.0];
+    defaultConfig.shapelessSeparatorBackgroundColor = [UIColor colorOfHex:0xD8D8D8 alpha:1.0];
+    defaultConfig.dialogBackgroundColor = [UIColor colorOfHex:0xFFFFFF alpha:1.0];
+    
+    defaultConfig.titleLabelTop = 20.0;
+    defaultConfig.titleLabelMargin = 20.0;
+    defaultConfig.detailLabelTop = 16.0;
+    defaultConfig.detailLabelMargin = 20.0;
+    defaultConfig.inputViewTop = 20.0;
+    defaultConfig.inputViewMargin = 20.0;
+    defaultConfig.buttonViewTop = 20.0;
+    defaultConfig.roundCornerButtonMargin = 20.0;
+    defaultConfig.roundCornerButtonMiddleMargin = 16.0;
+    defaultConfig.shapelessHorizontalSeparatorMargin = 0.0;
+    defaultConfig.shapelessVerticalSeparatorMargin = 0.0;
+    defaultConfig.textFieldMargin = 8;
+    defaultConfig.textViewMargin = 16;
+    defaultConfig.textViewTop = 8;
+    defaultConfig.textViewBottom = 33.0;
+    
+    defaultConfig.textFieldBackgroundViewHeight = 40.0;
+    defaultConfig.textViewBackgroundViewHeight = 125.0;
+    defaultConfig.roundCornerButtonBackgroundViewHeight = 80.0;
+    defaultConfig.roundCornerButtonHeight = 40.0;
+    defaultConfig.shapelessButtonHeight = 54.0;
+    defaultConfig.shapelessSeparatorHeight = 0.5;
+    defaultConfig.contentContainerIncrement = 40.0;
+    
+    defaultConfig.dialogCornerRadius = 6.0;
+    defaultConfig.roundCornerButtonCornerRadius = 20.0;
+    defaultConfig.textFieldBackgroundViewCornerRadius = 20.0;
+    defaultConfig.textViewBackgroundViewCornerRadius = 6.0;
+    
+    defaultConfig.textViewBackgroundViewBorderWidth = 1.0;
+    defaultConfig.roundCornerCancelButtonBorderWidth = 1.0;
+    
+    defaultConfig.motionEffectExtent = 10.0;
+    return defaultConfig;
 }
 
 @end

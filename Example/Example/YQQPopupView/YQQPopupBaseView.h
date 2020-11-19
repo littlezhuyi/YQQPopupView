@@ -6,6 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "YQQPopupViewConfig.h"
 @class YQQPopupButtonItem;
 @class YQQPopupBaseView;
 
@@ -20,14 +21,6 @@ typedef NS_ENUM(NSUInteger, YQQPopupViewInputType) {
 };
 
 typedef void(^SelectIndex)(NSInteger index, NSString * _Nullable inputContent);
-
-@protocol YQQPopupBaseViewDelegate <NSObject>
-
-@optional
-
-- (void)popupView:(YQQPopupBaseView *_Nullable)popupView didSelectIndex:(NSInteger)index;
-
-@end
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -45,11 +38,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) YQQPopupViewInputType inputType;
 
+@property (nonatomic, strong) YQQPopupViewConfig *popupViewConfig;
+
 @property (nonatomic, assign) NSInteger textViewMaxLength;
 
 @property (nonatomic, copy) NSString *placeholder;
-
-@property (nonatomic, weak) id<YQQPopupBaseViewDelegate> delegate;
 
 #pragma mark - Public
 
@@ -64,6 +57,8 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Subclass Override
 
 - (UIView *)fetchContentContainer;
+
+- (void)dialogButtonDidClickWithIndex:(NSInteger)index;
 
 @end
 

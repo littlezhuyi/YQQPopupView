@@ -6,7 +6,6 @@
 //
 
 #import "YQQPopupBaseView.h"
-#import "YQQPopupViewConfig.h"
 
 @interface YQQPopupBaseView ()
 
@@ -30,6 +29,7 @@
         _attachedView = [UIApplication sharedApplication].delegate.window;
         _buttons = @[@"ok"];
         _textViewMaxLength = 50;
+        _popupViewConfig = [YQQPopupViewConfig defaultConfig];
         
         self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
         
@@ -53,7 +53,7 @@
 - (void)addButtons {
     CGSize contentContainerSize = [self contentContainerSize];
     if (self.buttonType == YQQPopupViewButtonTypeRoundCorner) {
-        UIView *buttonBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, contentContainerSize.height, contentContainerSize.width, kYQQPopupViewConfig.roundCornerButtonBackgroundViewHeight)];
+        UIView *buttonBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, contentContainerSize.height, contentContainerSize.width, self.popupViewConfig.roundCornerButtonBackgroundViewHeight)];
         UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
         leftButton.tag = 0;
         [leftButton addTarget:self action:@selector(clicked:) forControlEvents:UIControlEventTouchUpInside];
@@ -61,39 +61,39 @@
         rightButton.tag = 1;
         [rightButton addTarget:self action:@selector(clicked:) forControlEvents:UIControlEventTouchUpInside];
         if (self.buttons.count == 1) {
-            leftButton.frame = CGRectMake(kYQQPopupViewConfig.roundCornerButtonMargin, (kYQQPopupViewConfig.roundCornerButtonBackgroundViewHeight - kYQQPopupViewConfig.roundCornerButtonHeight) / 2.0, contentContainerSize.width - kYQQPopupViewConfig.roundCornerButtonMargin * 2, kYQQPopupViewConfig.roundCornerButtonHeight);
-            leftButton.backgroundColor = kYQQPopupViewConfig.roundCornerConfirmButtonBackgroundColor;
-            leftButton.layer.cornerRadius = kYQQPopupViewConfig.roundCornerButtonCornerRadius;
-            leftButton.titleLabel.font = kYQQPopupViewConfig.roundCornerButtonFont;
-            [leftButton setTitleColor:kYQQPopupViewConfig.roundCornerConfirmButtonTitleColor forState:UIControlStateNormal];
+            leftButton.frame = CGRectMake(self.popupViewConfig.roundCornerButtonMargin, (self.popupViewConfig.roundCornerButtonBackgroundViewHeight - self.popupViewConfig.roundCornerButtonHeight) / 2.0, contentContainerSize.width - self.popupViewConfig.roundCornerButtonMargin * 2, self.popupViewConfig.roundCornerButtonHeight);
+            leftButton.backgroundColor = self.popupViewConfig.roundCornerConfirmButtonBackgroundColor;
+            leftButton.layer.cornerRadius = self.popupViewConfig.roundCornerButtonCornerRadius;
+            leftButton.titleLabel.font = self.popupViewConfig.roundCornerButtonFont;
+            [leftButton setTitleColor:self.popupViewConfig.roundCornerConfirmButtonTitleColor forState:UIControlStateNormal];
             [leftButton setTitle:[self.buttons objectAtIndex:0] forState:UIControlStateNormal];
             [buttonBackgroundView addSubview:leftButton];
             [_dialogView addSubview:buttonBackgroundView];
         }
         if (self.buttons.count == 2) {
-            leftButton.frame = CGRectMake(kYQQPopupViewConfig.roundCornerButtonMargin, (kYQQPopupViewConfig.roundCornerButtonBackgroundViewHeight - kYQQPopupViewConfig.roundCornerButtonHeight) / 2.0, (contentContainerSize.width - kYQQPopupViewConfig.roundCornerButtonMargin * 2 - kYQQPopupViewConfig.roundCornerButtonMiddleMargin) / 2.0, kYQQPopupViewConfig.roundCornerButtonHeight);
-            leftButton.layer.cornerRadius = kYQQPopupViewConfig.roundCornerButtonCornerRadius;
-            leftButton.titleLabel.font = kYQQPopupViewConfig.roundCornerButtonFont;
-            [leftButton setTitleColor:kYQQPopupViewConfig.roundCornerCancelButtonTitleColor forState:UIControlStateNormal];
+            leftButton.frame = CGRectMake(self.popupViewConfig.roundCornerButtonMargin, (self.popupViewConfig.roundCornerButtonBackgroundViewHeight - self.popupViewConfig.roundCornerButtonHeight) / 2.0, (contentContainerSize.width - self.popupViewConfig.roundCornerButtonMargin * 2 - self.popupViewConfig.roundCornerButtonMiddleMargin) / 2.0, self.popupViewConfig.roundCornerButtonHeight);
+            leftButton.layer.cornerRadius = self.popupViewConfig.roundCornerButtonCornerRadius;
+            leftButton.titleLabel.font = self.popupViewConfig.roundCornerButtonFont;
+            [leftButton setTitleColor:self.popupViewConfig.roundCornerCancelButtonTitleColor forState:UIControlStateNormal];
             [leftButton setTitle:[self.buttons objectAtIndex:0] forState:UIControlStateNormal];
-            leftButton.layer.borderWidth = kYQQPopupViewConfig.roundCornerCancelButtonBorderWidth;
-            leftButton.layer.borderColor = kYQQPopupViewConfig.roundCornerCancelButtonBorderColor.CGColor;
+            leftButton.layer.borderWidth = self.popupViewConfig.roundCornerCancelButtonBorderWidth;
+            leftButton.layer.borderColor = self.popupViewConfig.roundCornerCancelButtonBorderColor.CGColor;
             [buttonBackgroundView addSubview:leftButton];
             [_dialogView addSubview:buttonBackgroundView];
             
-            rightButton.frame = CGRectMake(CGRectGetMaxX(leftButton.frame) + kYQQPopupViewConfig.roundCornerButtonMiddleMargin, (kYQQPopupViewConfig.roundCornerButtonBackgroundViewHeight - kYQQPopupViewConfig.roundCornerButtonHeight) / 2.0, (contentContainerSize.width - kYQQPopupViewConfig.roundCornerButtonMargin * 2 - kYQQPopupViewConfig.roundCornerButtonMiddleMargin) / 2.0, kYQQPopupViewConfig.roundCornerButtonHeight);
-            rightButton.backgroundColor = kYQQPopupViewConfig.roundCornerConfirmButtonBackgroundColor;
-            rightButton.layer.cornerRadius = kYQQPopupViewConfig.roundCornerButtonCornerRadius;
-            rightButton.titleLabel.font = kYQQPopupViewConfig.roundCornerButtonFont;
-            [rightButton setTitleColor:kYQQPopupViewConfig.roundCornerConfirmButtonTitleColor forState:UIControlStateNormal];
+            rightButton.frame = CGRectMake(CGRectGetMaxX(leftButton.frame) + self.popupViewConfig.roundCornerButtonMiddleMargin, (self.popupViewConfig.roundCornerButtonBackgroundViewHeight - self.popupViewConfig.roundCornerButtonHeight) / 2.0, (contentContainerSize.width - self.popupViewConfig.roundCornerButtonMargin * 2 - self.popupViewConfig.roundCornerButtonMiddleMargin) / 2.0, self.popupViewConfig.roundCornerButtonHeight);
+            rightButton.backgroundColor = self.popupViewConfig.roundCornerConfirmButtonBackgroundColor;
+            rightButton.layer.cornerRadius = self.popupViewConfig.roundCornerButtonCornerRadius;
+            rightButton.titleLabel.font = self.popupViewConfig.roundCornerButtonFont;
+            [rightButton setTitleColor:self.popupViewConfig.roundCornerConfirmButtonTitleColor forState:UIControlStateNormal];
             [rightButton setTitle:[self.buttons objectAtIndex:1] forState:UIControlStateNormal];
             [buttonBackgroundView addSubview:rightButton];
             [_dialogView addSubview:buttonBackgroundView];
         }
     } else {
-        UIView *buttonBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, contentContainerSize.height, contentContainerSize.width, kYQQPopupViewConfig.shapelessButtonHeight + kYQQPopupViewConfig.shapelessSeparatorHeight)];
-        UIView *horizontalSeparator = [[UIView alloc] initWithFrame:CGRectMake(kYQQPopupViewConfig.shapelessHorizontalSeparatorMargin, 0, contentContainerSize.width - kYQQPopupViewConfig.shapelessHorizontalSeparatorMargin * 2, kYQQPopupViewConfig.shapelessSeparatorHeight)];
-        horizontalSeparator.backgroundColor = kYQQPopupViewConfig.shapelessSeparatorBackgroundColor;
+        UIView *buttonBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, contentContainerSize.height, contentContainerSize.width, self.popupViewConfig.shapelessButtonHeight + self.popupViewConfig.shapelessSeparatorHeight)];
+        UIView *horizontalSeparator = [[UIView alloc] initWithFrame:CGRectMake(self.popupViewConfig.shapelessHorizontalSeparatorMargin, 0, contentContainerSize.width - self.popupViewConfig.shapelessHorizontalSeparatorMargin * 2, self.popupViewConfig.shapelessSeparatorHeight)];
+        horizontalSeparator.backgroundColor = self.popupViewConfig.shapelessSeparatorBackgroundColor;
         [buttonBackgroundView addSubview:horizontalSeparator];
         UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
         leftButton.tag = 0;
@@ -102,33 +102,33 @@
         rightButton.tag = 1;
         [rightButton addTarget:self action:@selector(clicked:) forControlEvents:UIControlEventTouchUpInside];
         if (self.buttons.count == 1) {
-            leftButton.frame = CGRectMake(0, kYQQPopupViewConfig.shapelessSeparatorHeight, contentContainerSize.width, kYQQPopupViewConfig.shapelessButtonHeight);
-            leftButton.backgroundColor = kYQQPopupViewConfig.dialogBackgroundColor;
-            leftButton.titleLabel.font = kYQQPopupViewConfig.shapelessButtonFont;
-            [leftButton setTitleColor:kYQQPopupViewConfig.shapelessConfirmButtonTitleColor forState:UIControlStateNormal];
+            leftButton.frame = CGRectMake(0, self.popupViewConfig.shapelessSeparatorHeight, contentContainerSize.width, self.popupViewConfig.shapelessButtonHeight);
+            leftButton.backgroundColor = self.popupViewConfig.dialogBackgroundColor;
+            leftButton.titleLabel.font = self.popupViewConfig.shapelessButtonFont;
+            [leftButton setTitleColor:self.popupViewConfig.shapelessConfirmButtonTitleColor forState:UIControlStateNormal];
             [leftButton setTitle:[self.buttons objectAtIndex:0] forState:UIControlStateNormal];
             [buttonBackgroundView addSubview:leftButton];
             [_dialogView addSubview:buttonBackgroundView];
         }
         if (self.buttons.count == 2) {
-            leftButton.frame = CGRectMake(0, kYQQPopupViewConfig.shapelessSeparatorHeight, contentContainerSize.width / 2.0, kYQQPopupViewConfig.shapelessButtonHeight);
-            leftButton.backgroundColor = kYQQPopupViewConfig.dialogBackgroundColor;
-            leftButton.titleLabel.font = kYQQPopupViewConfig.shapelessButtonFont;
-            [leftButton setTitleColor:kYQQPopupViewConfig.shapelessCancelButtonTitleColor forState:UIControlStateNormal];
+            leftButton.frame = CGRectMake(0, self.popupViewConfig.shapelessSeparatorHeight, contentContainerSize.width / 2.0, self.popupViewConfig.shapelessButtonHeight);
+            leftButton.backgroundColor = self.popupViewConfig.dialogBackgroundColor;
+            leftButton.titleLabel.font = self.popupViewConfig.shapelessButtonFont;
+            [leftButton setTitleColor:self.popupViewConfig.shapelessCancelButtonTitleColor forState:UIControlStateNormal];
             [leftButton setTitle:[self.buttons objectAtIndex:0] forState:UIControlStateNormal];
             [buttonBackgroundView addSubview:leftButton];
             [_dialogView addSubview:buttonBackgroundView];
             
-            rightButton.frame = CGRectMake(CGRectGetMaxX(leftButton.frame), kYQQPopupViewConfig.shapelessSeparatorHeight, contentContainerSize.width / 2.0, kYQQPopupViewConfig.shapelessButtonHeight);
-            rightButton.backgroundColor = kYQQPopupViewConfig.dialogBackgroundColor;
-            rightButton.titleLabel.font = kYQQPopupViewConfig.shapelessButtonFont;
-            [rightButton setTitleColor:kYQQPopupViewConfig.shapelessConfirmButtonTitleColor forState:UIControlStateNormal];
+            rightButton.frame = CGRectMake(CGRectGetMaxX(leftButton.frame), self.popupViewConfig.shapelessSeparatorHeight, contentContainerSize.width / 2.0, self.popupViewConfig.shapelessButtonHeight);
+            rightButton.backgroundColor = self.popupViewConfig.dialogBackgroundColor;
+            rightButton.titleLabel.font = self.popupViewConfig.shapelessButtonFont;
+            [rightButton setTitleColor:self.popupViewConfig.shapelessConfirmButtonTitleColor forState:UIControlStateNormal];
             [rightButton setTitle:[self.buttons objectAtIndex:1] forState:UIControlStateNormal];
             [buttonBackgroundView addSubview:rightButton];
             [_dialogView addSubview:buttonBackgroundView];
             
-            UIView *verticalSeparator = [[UIView alloc] initWithFrame:CGRectMake((contentContainerSize.width - kYQQPopupViewConfig.shapelessSeparatorHeight) / 2.0, kYQQPopupViewConfig.shapelessSeparatorHeight + kYQQPopupViewConfig.shapelessVerticalSeparatorMargin, kYQQPopupViewConfig.shapelessSeparatorHeight, kYQQPopupViewConfig.shapelessButtonHeight - kYQQPopupViewConfig.shapelessVerticalSeparatorMargin * 2)];
-            verticalSeparator.backgroundColor = kYQQPopupViewConfig.shapelessSeparatorBackgroundColor;
+            UIView *verticalSeparator = [[UIView alloc] initWithFrame:CGRectMake((contentContainerSize.width - self.popupViewConfig.shapelessSeparatorHeight) / 2.0, self.popupViewConfig.shapelessSeparatorHeight + self.popupViewConfig.shapelessVerticalSeparatorMargin, self.popupViewConfig.shapelessSeparatorHeight, self.popupViewConfig.shapelessButtonHeight - self.popupViewConfig.shapelessVerticalSeparatorMargin * 2)];
+            verticalSeparator.backgroundColor = self.popupViewConfig.shapelessSeparatorBackgroundColor;
             [buttonBackgroundView addSubview:verticalSeparator];
         }
     }
@@ -140,12 +140,12 @@
     }
     
     UIInterpolatingMotionEffect *horizontalEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.x" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
-    horizontalEffect.minimumRelativeValue = @(-kYQQPopupViewConfig.motionEffectExtent);
-    horizontalEffect.maximumRelativeValue = @(kYQQPopupViewConfig.motionEffectExtent);
+    horizontalEffect.minimumRelativeValue = @(-self.popupViewConfig.motionEffectExtent);
+    horizontalEffect.maximumRelativeValue = @(self.popupViewConfig.motionEffectExtent);
     
     UIInterpolatingMotionEffect *verticalEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.y" type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
-    verticalEffect.minimumRelativeValue = @(-kYQQPopupViewConfig.motionEffectExtent);
-    verticalEffect.maximumRelativeValue = @(kYQQPopupViewConfig.motionEffectExtent);
+    verticalEffect.minimumRelativeValue = @(-self.popupViewConfig.motionEffectExtent);
+    verticalEffect.maximumRelativeValue = @(self.popupViewConfig.motionEffectExtent);
     
     UIMotionEffectGroup *motionEffectGroup = [[UIMotionEffectGroup alloc] init];
     motionEffectGroup.motionEffects = @[horizontalEffect, verticalEffect];
@@ -155,8 +155,8 @@
 
 - (UIView *)createDialogView {
     UIView *dialogView = [[UIView alloc] init];
-    dialogView.backgroundColor = kYQQPopupViewConfig.dialogBackgroundColor;
-    dialogView.layer.cornerRadius = kYQQPopupViewConfig.dialogCornerRadius;
+    dialogView.backgroundColor = self.popupViewConfig.dialogBackgroundColor;
+    dialogView.layer.cornerRadius = self.popupViewConfig.dialogCornerRadius;
     dialogView.clipsToBounds = YES;
     return dialogView;
 }
@@ -164,9 +164,9 @@
 - (CGSize)dialogViewSize {
     CGSize contentContainerSize = [self contentContainerSize];
     if (self.buttonType == YQQPopupViewButtonTypeRoundCorner) {
-        return CGSizeMake(contentContainerSize.width, contentContainerSize.height + kYQQPopupViewConfig.roundCornerButtonBackgroundViewHeight);
+        return CGSizeMake(contentContainerSize.width, contentContainerSize.height + self.popupViewConfig.roundCornerButtonBackgroundViewHeight);
     } else {
-        return CGSizeMake(contentContainerSize.width, contentContainerSize.height + kYQQPopupViewConfig.shapelessButtonHeight + kYQQPopupViewConfig.shapelessSeparatorHeight);
+        return CGSizeMake(contentContainerSize.width, contentContainerSize.height + self.popupViewConfig.shapelessButtonHeight + self.popupViewConfig.shapelessSeparatorHeight);
     }
 }
 
@@ -290,9 +290,7 @@
 }
 
 - (void)clicked:(UIButton *)sender {
-    if ([self.delegate respondsToSelector:@selector(popupView:didSelectIndex:)]) {
-        [self.delegate popupView:self didSelectIndex:sender.tag];
-    }
+    [self dialogButtonDidClickWithIndex:sender.tag];
 }
 
 #pragma mark - Subclass Override
@@ -302,6 +300,10 @@
     UITextField *text = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 300, 50)];
     [view addSubview:text];
     return view;
+}
+
+- (void)dialogButtonDidClickWithIndex:(NSInteger)index {
+    
 }
 
 @end

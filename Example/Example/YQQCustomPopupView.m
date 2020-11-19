@@ -8,7 +8,7 @@
 #import "YQQCustomPopupView.h"
 #import "UIColor+YQQAdd.h"
 
-@interface YQQCustomPopupView () <YQQPopupBaseViewDelegate>
+@interface YQQCustomPopupView ()
 
 @property (nonatomic, strong) UIImage *image;
 
@@ -30,7 +30,6 @@
         _image = image;
         self.buttons = buttonTitles;
         _selectIndex = selectIndex;
-        self.delegate = self;
     }
     return self;
 }
@@ -44,7 +43,7 @@
 
 #pragma mark - YQQPopupBaseViewDelegate
 
-- (void)popupView:(YQQPopupBaseView *)popupView didSelectIndex:(NSInteger)index {
+- (void)dialogButtonDidClickWithIndex:(NSInteger)index {
     if (self.selectIndex) {
         self.selectIndex(index, nil);
     }
