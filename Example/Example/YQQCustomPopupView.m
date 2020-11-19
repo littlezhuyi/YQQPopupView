@@ -41,8 +41,6 @@
     return imageView;
 }
 
-#pragma mark - YQQPopupBaseViewDelegate
-
 - (void)dialogButtonDidClickWithIndex:(NSInteger)index {
     if (self.selectIndex) {
         self.selectIndex(index, nil);
