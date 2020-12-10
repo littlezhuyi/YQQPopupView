@@ -218,12 +218,14 @@
 #pragma mark - UITextViewDelegate
 
 - (void)textViewDidChange:(UITextView *)textView {
+    UITextRange *selectedRange = [textView markedTextRange];
+    NSString *newText = [textView textInRange:selectedRange];
+    if(newText.length > 0) return;
     if (self.textViewMaxLength != 0) {
-        if (textView.text.length <= self.textViewMaxLength) {
-            self.textViewMaxLengthLabel.text = [NSString stringWithFormat:@"%lu/%ld", (unsigned long)textView.text.length, (long)self.textViewMaxLength];
-        } else {
+        if (textView.text.length > self.textViewMaxLength) {
             textView.text = [textView.text substringWithRange:NSMakeRange(0, self.textViewMaxLength)];
         }
+        self.textViewMaxLengthLabel.text = [NSString stringWithFormat:@"%lu/%ld", (unsigned long)textView.text.length, (long)self.textViewMaxLength];
     }
     self.inputContent = textView.text;
 }
